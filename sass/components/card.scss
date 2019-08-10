@@ -1,0 +1,36 @@
+@import "../core/variables.scss";
+
+.r-list{
+    border: 1px solid #F2F2F2;
+    border-radius: 2px;
+    background-color: #ffffff;
+    padding: 1rem;
+
+    .r-list__header{
+        font-size: 1.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 2.5px solid black;
+    }
+
+    .r-list__body{
+        list-style-type: none;
+        padding: 0;
+        .r-list_body_item{
+            font-size: 1rem;
+            line-height: 2rem;
+            border-bottom: 1px solid #F2F2F2;    
+        }
+    }
+}
+
+@mixin r-arrtibute($name,$color) {
+    .r-list--#{$name}{
+        .r-list__header{
+            border-bottom: 2.5px solid #{$color};
+        }   
+    }
+}
+
+@each $name,$color in $colors{
+    @include r-arrtibute($name,$color);
+}
