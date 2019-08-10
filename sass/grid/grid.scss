@@ -1,0 +1,60 @@
+@import "../core/variables.scss";
+
+@mixin col($index) {
+    box-sizing: border-box;
+    width: ($index*(100/12))*1%;
+    flex: 0 0 auto;
+    padding: 0.5rem;
+}
+
+.r-row{
+    display: flex;
+    flex-flow: row wrap;
+    .r-col{
+        flex-grow: 1;
+        box-sizing: border-box;
+        padding: 0.5rem;
+    }
+    // normal columns
+    @for $index from 1 through   12 {
+       .r-col-#{$index}{
+            @include col($index);   
+            @media only screen and (max-width:$xs) {
+                width: 100%;
+            }
+       }
+    }
+    // large columns
+    @media only screen and (max-width:$lg) {
+        @for $index from 1 through  12{
+            .r-col-lg-#{$index}{
+                @include col($index)   
+           }
+        }
+    }
+    //normal columns
+    @media only screen and (max-width:$md) {
+        @for $index from 1 through  12{
+            .r-col-md-#{$index}{
+                @include col($index)   
+           }
+        }
+    }
+    //small screen cloumns
+    @media only screen and (max-width:$sm) {
+        @for $index from 1 through  12{
+            .r-col-sm-#{$index}{
+                @include col($index)   
+           }
+        }
+    }
+    // extra-small screen -- xs 30rem
+    @media only screen and (max-width:$xs) {
+        @for $index from 1 through  12{
+            .r-col-xs-#{$index}{
+                @include col($index)   
+           }
+        }
+    }
+}
+
